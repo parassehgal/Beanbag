@@ -19,7 +19,7 @@ restService.post("/bean", function(req, res) {
 			if(req.body.queryResult && req.body.queryResult.parameters && 
 				req.body.queryResult.parameters.state && req.body.queryResult.parameters.number-sequence)
 				{
-					if(req.body.queryResult.parameters.state == "on")
+					if(JSON.stringify(req.body.queryResult.parameters.state) == "on")
 					{
 					ans = "ok ac turned on";
 					}
