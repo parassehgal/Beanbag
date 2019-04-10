@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+var fs = require('fs');
 const restService = express();
+var logfileName='c:/nodeLog.txt';
 
 restService.use(
   bodyParser.urlencoded({
@@ -11,19 +13,20 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/bean", function(req, res) {
-
+//log(JSON.stringify(req.body.queryResult));
 	var ans;
+	var v=req.body.queryResult;
 
-	if(req.body.queryResult.intent.displayName == "on_off_state")
+	if(v.intent.displayName == "on_off_state")
 		{
-			if(req.body.queryResult && req.body.queryResult.parameters && 
-				req.body.queryResult.parameters.state && req.body.queryResult.parameters.number-sequence)
+			
+			if(v!=null && v.parameters && v.parameters.state && v.parameters["number-sequence"])
 				{
-					if((JSON.stringify(req.body.queryResult.parameters.state)) == "on")
+					if(v.parameters.state == "on")
 					{
 					ans = "ok ac turned on";
 					}
-					else if(req.body.queryResult.parameters.state == "on")
+					else if(v.parameters.state == "off")
 					{
 					ans = "ok ac turned off";
 					}
@@ -44,3 +47,10 @@ restService.post("/bean", function(req, res) {
 		  
 }).listen(process.env.PORT||9879);
 console.log("Running at port 9879");
+
+function log(txt)
+{
+	fs.appendFile(logfileName, txt+'\\n', function (err) {
+		if (err) console.log('Error while writing log: '+ err);
+	});
+}
