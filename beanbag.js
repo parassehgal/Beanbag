@@ -10,7 +10,7 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-restService.post("/res", function(req, res) {
+restService.post("/bean", function(req, res) {
 
 	var ans;
 
