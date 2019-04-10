@@ -24,11 +24,11 @@ restService.post("/bean", function(req, res) {
 				{
 					if(v.parameters.state == "on")
 					{
-					ans = "ok ac turned on";
+					ans = "ok ac turned on in room number "+v.parameters["number-sequence"];
 					}
 					else if(v.parameters.state == "off")
 					{
-					ans = "ok ac turned off";
+					ans = "ok ac turned off"+v.parameters["number-sequence"];
 					}
 					
 				}
