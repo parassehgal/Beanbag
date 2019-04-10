@@ -20,9 +20,11 @@ restService.post("/bean", function(req, res) {
 
 	if(v.intent.displayName == "on_off_state")
 		{
-			
-			ans = funct.on_off_funct(v);
-				
+			ans = funct.on_off_funct(v);	
+		}
+	else if(v.intent.displayName == "operate_mode")
+		{
+			ans = funct.operate_mode_funct(v);	
 		}
 		
 		
@@ -36,7 +38,7 @@ console.log("Running at port 9879");
 
 function log(txt)
 {
-	fs.appendFile(logfileName, txt+'\n', function (err) {
+	fs.appendFile(logfileName, txt+'\\n', function (err) {
 		if (err) console.log('Error while writing log: '+ err);
 	});
 }
