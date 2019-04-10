@@ -16,10 +16,24 @@ restService.post("/bean", function(req, res) {
 
 	if(req.body.queryResult.intent.displayName == "on_off_state")
 		{
-			if(req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.state)
+			if(req.body.queryResult && req.body.queryResult.parameters && 
+				req.body.queryResult.parameters.state && req.body.queryResult.parameters.number-sequence)
 				{
-					ans = "hello from api";
+					if(req.body.queryResult.parameters.state == "on")
+					{
+					ans = "ok ac turned on";
+					}
+					else if(req.body.queryResult.parameters.state == "on")
+					{
+					ans = "ok ac turned off";
+					}
+					
 				}
+			else
+				{
+				ans = "sorry say again with room number";
+				}
+				
 		}
 		
 		
@@ -29,3 +43,4 @@ restService.post("/bean", function(req, res) {
 		  });
 		  
 }).listen(process.env.PORT||9879);
+console.log("Running at port 9879");
