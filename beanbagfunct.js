@@ -76,9 +76,38 @@ module.exports = {
 			
 			else if(v.parameters.temperature)
 			{
-			var unit = v.parameters.temperature.unit;
-			var temp = v.parameters.temperature.amount;
-			ans = "Temperature set to "+ temp + "°" + unit;
+					var unit = v.parameters.temperature.unit;
+					var temp = v.parameters.temperature.amount;
+					if(unit == "C")
+					{
+					ans = "Temperature set to "+ temp + " degrees celsius" ;
+					}
+					else if(unit == "F")
+					{
+					ans = "Temperature set to "+ temp + " degrees farenheit" ;
+					}
+			}
+			
+			else if(v.parameters.feeling)
+			{
+				var feeling = v.parameters.feeling;
+				if(feeling == "hot")
+				{
+				ans = "Temperature decreased by 3 degrees";
+				}
+				else if(feeling == "slightly hot")
+				{
+				ans = "Temperature decreased by 2 degrees";
+				}
+				else if(feeling == "slightly cold")
+				{
+				ans = "Temperature increased by 2 degrees";
+				}
+				else if(feeling == "cold")
+				{
+				ans = "Temperature increased by 2 degrees";
+				}
+			
 			}
 		
 		}
