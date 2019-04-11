@@ -46,7 +46,7 @@ module.exports = {
 					ans = "sorry can you specify the valid mode";
 					}
 				return ans;
-	}
+	},
 	
 	customise_mode_funct : function(v)
 	{
