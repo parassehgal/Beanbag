@@ -3,15 +3,15 @@ module.exports = {
 
 	on_off_funct : function(v)
 	{
-		if(v!=null && v.parameters && v.parameters.state && v.parameters["number-sequence"])
+		if(v!=null && v.parameters && v.parameters.state && v.parameters["flight-number"])
 						{
 							if(v.parameters.state == "on")
 							{
-							ans = "ok ac turned on in "+v.parameters["number-sequence"];
+							ans = "ok ac turned on in "+v.parameters["flight-number"];
 							}
 							else if(v.parameters.state == "off")
 							{
-							ans = "ok ac turned off in "+v.parameters["number-sequence"];
+							ans = "ok ac turned off in "+v.parameters["flight-number"];
 							}
 							
 						}
