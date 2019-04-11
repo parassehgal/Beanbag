@@ -30,6 +30,10 @@ restService.post("/bean", function(req, res) {
 		{
 			ans = funct.customise_mode_funct(v);
 		}
+	else if(v.intent.displayName == "comfort_mode")
+		{
+			ans = funct.comfort_mode_funct(v);
+		}
 		
 		
 	return res.json({

@@ -127,6 +127,49 @@ module.exports = {
 		
 		}
 		return ans;
+	},
+	
+	comfort_mode_funct : function(v)
+	{
+	
+		if(v!=null)
+		{
+			if(v.parameters.comfortscale)
+			{
+				var comfort = v.parameters.comfortscale;
+				switch(comfort)
+				{
+				case "cool" : ans = "AC running in cool mode";
+								break;
+				case "slightly cool" : ans = "AC running in slightly cool mode";
+								break; 
+				case "comfortable" : ans = "AC running in comfortable mode";
+								break; 
+				case "slightly warm" : ans = "AC running in slightly warm mode";
+								break; 
+				case "warm" : ans = "AC running in warm mode";
+								break; 
+				
+				}
+			}
+			else if(v.parameters.feeling)
+			{
+				var feeling = v.parameters.feeling;
+				switch(feeling)
+				{
+				case "cold" : ans = "AC running in warm mode";
+								break;
+				case "slightly cold" : ans = "AC running in slightly warm mode";
+								break; 
+				case "slightly hot" : ans = "AC running in slightly cool mode";
+								break; 
+				case "hot" : ans = "AC running in cool mode";
+								break; 
+				
+				}
+			}
+		}
+		return ans;
 	}
 
 };
