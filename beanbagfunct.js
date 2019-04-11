@@ -55,7 +55,7 @@ module.exports = {
 		
 			if(v.parameters.fan_speed)
 			{
-			var speed = v.parameters.fan_speed
+			var speed = v.parameters.fan_speed;
 			if(speed == "high")
 			{
 			ans = "fan running at high speed";
