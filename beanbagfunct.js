@@ -7,17 +7,17 @@ module.exports = {
 						{
 							if(v.parameters.state == "on")
 							{
-							ans = "ok ac turned on in room number "+v.parameters["number-sequence"];
+							ans = "ok ac turned on in "+v.parameters["number-sequence"];
 							}
 							else if(v.parameters.state == "off")
 							{
-							ans = "ok ac turned off in room number "+v.parameters["number-sequence"];
+							ans = "ok ac turned off in "+v.parameters["number-sequence"];
 							}
 							
 						}
 				else
 					{
-					ans = "sorry can you say again with room number";
+					ans = "sorry can you say again ";
 					}
 				return ans;
 	},
