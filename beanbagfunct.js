@@ -55,23 +55,23 @@ module.exports = {
 		
 			if(v.parameters.fan_speed)
 			{
-			var speed = v.parameters.fan_speed;
-			if(speed == "high")
-			{
-			ans = "fan running at high speed";
-			}
-			else if(speed == "medium")
-			{
-			ans = "fan running at medium speed";
-			}
-			else if(speed == "low")
-			{
-			ans = "fan running at low speed";
-			}
-			else if(speed == "auto")
-			{
-			ans = "fan running at auto speed";
-			}
+				var speed = v.parameters.fan_speed;
+				if(speed == "high")
+				{
+				ans = "fan running at high speed";
+				}
+				else if(speed == "medium")
+				{
+				ans = "fan running at medium speed";
+				}
+				else if(speed == "low")
+				{
+				ans = "fan running at low speed";
+				}
+				else if(speed == "auto")
+				{
+				ans = "fan running at auto speed";
+				}
 			}
 		
 		}
