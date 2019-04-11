@@ -17,7 +17,7 @@ module.exports = {
 						}
 				else
 					{
-					ans = "sorry can you say again? ";
+					ans = "sorry can you say again?";
 					}
 				return ans;
 	},
@@ -26,6 +26,7 @@ module.exports = {
 	{
 		if(v!=null && v.parameters && v.parameters.mode)
 						{
+						
 							if(v.parameters.mode == "comfort")
 							{
 							ans = "ok ac running in comfort mode";
@@ -47,5 +48,33 @@ module.exports = {
 				return ans;
 	}
 	
+	customise_mode_funct : function(v)
+	{
+		if(v!=null && v.parameters)
+		{
+		
+			if(v.parameters.fan_speed)
+			{
+			var speed = v.parameters.fan_speed
+			if(speed == "high")
+			{
+			ans = "fan running at high speed";
+			}
+			else if(speed == "medium")
+			{
+			ans = "fan running at medium speed";
+			}
+			else if(speed == "low")
+			{
+			ans = "fan running at low speed";
+			}
+			else if(speed == "auto")
+			{
+			ans = "fan running at auto speed";
+			}
+			}
+		
+		}
+	}
 
 }

@@ -26,6 +26,10 @@ restService.post("/bean", function(req, res) {
 		{
 			ans = funct.operate_mode_funct(v);	
 		}
+	else if(v.intent.displayName == "customise_mode")
+		{
+			ans = funct.customise_mode_funct(v);
+		}
 		
 		
 	return res.json({
