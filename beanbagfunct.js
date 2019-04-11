@@ -78,13 +78,28 @@ module.exports = {
 			{
 					var unit = v.parameters.temperature.unit;
 					var temp = v.parameters.temperature.amount;
-					if(unit == "C")
+					
+					if(temp<14)
 					{
-					ans = "Temperature set to "+ temp + " degrees celsius" ;
+						if(v.queryText.includes("increase"))
+						{
+						ans = "Temperature increased by " + temp + " degrees";
+						}
+						else if(v.queryText.includes("decrease"))
+						{
+						ans = "Temperature decreased by " + temp + " degrees";
+						}
 					}
-					else if(unit == "F")
+					else
 					{
-					ans = "Temperature set to "+ temp + " degrees farenheit" ;
+						if(unit == "C")
+						{
+						ans = "Temperature set to "+ temp + " degrees celsius" ;
+						}
+						else if(unit == "F")
+						{
+						ans = "Temperature set to "+ temp + " degrees farenheit" ;
+						}
 					}
 			}
 			
@@ -105,7 +120,7 @@ module.exports = {
 				}
 				else if(feeling == "cold")
 				{
-				ans = "Temperature increased by 2 degrees";
+				ans = "Temperature increased by 3 degrees";
 				}
 			
 			}
