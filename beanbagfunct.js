@@ -50,7 +50,7 @@ module.exports = {
 	
 	customise_mode_funct : function(v)
 	{
-		if(v!=null && v.parameters)
+		if(v!=null)
 		{
 		
 			if(v.parameters.fan_speed)
