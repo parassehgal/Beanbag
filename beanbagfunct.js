@@ -73,6 +73,13 @@ module.exports = {
 				ans = "fan running at auto speed";
 				}
 			}
+			
+			else if(v.parameters.temperature)
+			{
+			var unit = v.parameters.temperature.unit;
+			var temp = v.parameters.temperature.amount;
+			ans = "Temperature set to "+ temp + "°" + unit;
+			}
 		
 		}
 		return ans;
