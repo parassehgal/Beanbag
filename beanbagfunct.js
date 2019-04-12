@@ -60,22 +60,18 @@ module.exports = {
 						if(v.parameters.fan_speed)
 						{
 							var speed = v.parameters.fan_speed;
-							if(speed == "high")
+							switch(speed)
 							{
-							ans = "fan running at high speed";
+								case "high": ans = "fan running at high speed";
+								break;
+								case "medium": ans = "fan running at medium speed";
+								break;
+								case "low": ans = "fan running at low speed";
+								break;
+								case "auto": ans = "fan running at auto speed";
+								break;
 							}
-							else if(speed == "medium")
-							{
-							ans = "fan running at medium speed";
-							}
-							else if(speed == "low")
-							{
-							ans = "fan running at low speed";
-							}
-							else if(speed == "auto")
-							{
-							ans = "fan running at auto speed";
-							}
+							
 						}
 					
 						else if(v.parameters.temperature)
@@ -147,23 +143,18 @@ module.exports = {
 			    var feeling = v.parameters.feeling;
 				if(current_mode == "customise")
 				{
-					
-					if(feeling == "hot")
+					switch(feeling)
 					{
-					ans = "Temperature decreased by 3 degrees";
+					case "hot": ans = "Temperature decreased by 3 degrees";
+					break;
+					case "slightly hot": ans = "Temperature decreased by 2 degrees";
+					break;
+					case "slightly cold": ans = "Temperature increased by 2 degrees";
+					break;
+					case "cold": ans = "Temperature increased by 3 degrees";
+					break;
 					}
-					else if(feeling == "slightly hot")
-					{
-					ans = "Temperature decreased by 2 degrees";
-					}
-					else if(feeling == "slightly cold")
-					{
-					ans = "Temperature increased by 2 degrees";
-					}
-					else if(feeling == "cold")
-					{
-					ans = "Temperature increased by 3 degrees";
-					}
+			
 				}
 				
 				else if(current_mode == "comfort")
@@ -186,7 +177,6 @@ module.exports = {
 		
 		}
 		return ans;
-	},
+	}
 	
-
 };
