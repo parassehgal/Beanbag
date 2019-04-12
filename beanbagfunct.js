@@ -188,21 +188,5 @@ module.exports = {
 		return ans;
 	},
 	
-		
-	switch_mode_yes_funct : function(v)
-	{
-		var mode = v.outputContexts[0].parameters.mode;
-		switch(mode)
-		{
-		case "comfort" : ans = "switched to comfort mode";
-		break;
-		case "away" : ans = "switched to away mode";
-		break;
-		case "customise" : ans = "switched to customise mode";
-		break;
-		console.log(ans);
-		}
-		return ans;
-	}
 
 };
