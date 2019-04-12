@@ -82,17 +82,17 @@ module.exports = {
 						{
 								var unit = v.parameters.temperature.unit;
 								var temp = v.parameters.temperature.amount;
+								var temp_change = v.parameters.temp_change;
 								
 								if(temp<14)
 								{
-									if(v.queryText.includes("increase"))
+									switch(temp_change)
 									{
-									ans = "Temperature increased by " + temp + " degrees";
-									}
-									else if(v.queryText.includes("decrease"))
-									{
-									ans = "Temperature decreased by " + temp + " degrees";
-									}
+									case "increase" : ans = "Temperature increased by " + temp + " degrees";
+									break;
+									case "decrease" : ans = "Temperature decreased by " + temp + " degrees";
+									break;
+									}	
 								}
 								else
 								{

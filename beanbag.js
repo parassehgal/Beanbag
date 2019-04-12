@@ -33,10 +33,7 @@ restService.post("/bean", function(req, res) {
 		{
 			ans = funct.combined_mode_funct(v,current_mode);
 		}
-	else if(v.intent.displayName == "comfort_mode")
-		{
-			ans = funct.comfort_mode_funct(v);
-		}
+	
 	else if(v.intent.displayName == "switch_mode_yes")
 		{
 			ans = funct.switch_mode_yes_funct(v);
