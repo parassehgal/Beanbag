@@ -17,7 +17,7 @@ restService.use(bodyParser.json());
 
 restService.post("/bean", function(req, res) {
 //log(JSON.stringify(req.body.queryResult));
-	var current_mode = "comfort";
+	var current_mode = "customise";
 	var ans;
 	var v=req.body.queryResult;
 
