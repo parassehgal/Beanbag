@@ -107,6 +107,10 @@ module.exports = {
 								}
 						}
 					}
+					else
+					{
+					ans = "Change the mode to customise mode";
+					}
 				}
 		
 			else if(v.parameters.comfortscale)
@@ -129,6 +133,10 @@ module.exports = {
 									break; 
 					
 					}
+				}
+				else
+				{
+				ans = "Change the mode to comfort mode";
 				}
 			}
 			
