@@ -11,10 +11,13 @@ restService.use(
   })
 );
 
+
+
 restService.use(bodyParser.json());
 
 restService.post("/bean", function(req, res) {
 //log(JSON.stringify(req.body.queryResult));
+	var current_mode = "comfort";
 	var ans;
 	var v=req.body.queryResult;
 
@@ -26,9 +29,9 @@ restService.post("/bean", function(req, res) {
 		{
 			ans = funct.operate_mode_funct(v);	
 		}
-	else if(v.intent.displayName == "customise_mode")
+	else if(v.intent.displayName == "combined_mode")
 		{
-			ans = funct.customise_mode_funct(v);
+			ans = funct.combined_mode_funct(v,current_mode);
 		}
 	else if(v.intent.displayName == "comfort_mode")
 		{

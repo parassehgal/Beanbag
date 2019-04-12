@@ -48,130 +48,139 @@ module.exports = {
 				return ans;
 	},
 	
-	customise_mode_funct : function(v)
+	combined_mode_funct : function(v,current_mode)
 	{
 		if(v!=null)
 		{
 		
-			if(v.parameters.fan_speed)
-			{
-				var speed = v.parameters.fan_speed;
-				if(speed == "high")
+			if(v.parameters.fan_speed || v.parameters.temperature)
 				{
-				ans = "fan running at high speed";
-				}
-				else if(speed == "medium")
-				{
-				ans = "fan running at medium speed";
-				}
-				else if(speed == "low")
-				{
-				ans = "fan running at low speed";
-				}
-				else if(speed == "auto")
-				{
-				ans = "fan running at auto speed";
-				}
-			}
-			
-			else if(v.parameters.temperature)
-			{
-					var unit = v.parameters.temperature.unit;
-					var temp = v.parameters.temperature.amount;
+					if(current_mode == "customise")
+					{
+						if(v.parameters.fan_speed)
+						{
+							var speed = v.parameters.fan_speed;
+							if(speed == "high")
+							{
+							ans = "fan running at high speed";
+							}
+							else if(speed == "medium")
+							{
+							ans = "fan running at medium speed";
+							}
+							else if(speed == "low")
+							{
+							ans = "fan running at low speed";
+							}
+							else if(speed == "auto")
+							{
+							ans = "fan running at auto speed";
+							}
+						}
 					
-					if(temp<14)
-					{
-						if(v.queryText.includes("increase"))
+						else if(v.parameters.temperature)
 						{
-						ans = "Temperature increased by " + temp + " degrees";
-						}
-						else if(v.queryText.includes("decrease"))
-						{
-						ans = "Temperature decreased by " + temp + " degrees";
+								var unit = v.parameters.temperature.unit;
+								var temp = v.parameters.temperature.amount;
+								
+								if(temp<14)
+								{
+									if(v.queryText.includes("increase"))
+									{
+									ans = "Temperature increased by " + temp + " degrees";
+									}
+									else if(v.queryText.includes("decrease"))
+									{
+									ans = "Temperature decreased by " + temp + " degrees";
+									}
+								}
+								else
+								{
+									if(unit == "C")
+									{
+									ans = "Temperature set to "+ temp + " degrees celsius" ;
+									}
+									else if(unit == "F")
+									{
+									ans = "Temperature set to "+ temp + " degrees farenheit" ;
+									}
+								}
 						}
 					}
-					else
+				}
+		
+			else if(v.parameters.comfortscale)
+			{
+			
+				if(current_mode == "comfort")
+				{
+					var comfort = v.parameters.comfortscale;
+					switch(comfort)
 					{
-						if(unit == "C")
-						{
-						ans = "Temperature set to "+ temp + " degrees celsius" ;
-						}
-						else if(unit == "F")
-						{
-						ans = "Temperature set to "+ temp + " degrees farenheit" ;
-						}
+					case "cool" : ans = "AC running in cool mode";
+									break;
+					case "slightly cool" : ans = "AC running in slightly cool mode";
+									break; 
+					case "comfortable" : ans = "AC running in comfortable mode";
+									break; 
+					case "slightly warm" : ans = "AC running in slightly warm mode";
+									break; 
+					case "warm" : ans = "AC running in warm mode";
+									break; 
+					
 					}
+				}
 			}
+			
 			
 			else if(v.parameters.feeling)
 			{
-				var feeling = v.parameters.feeling;
-				if(feeling == "hot")
-				{
-				ans = "Temperature decreased by 3 degrees";
-				}
-				else if(feeling == "slightly hot")
-				{
-				ans = "Temperature decreased by 2 degrees";
-				}
-				else if(feeling == "slightly cold")
-				{
-				ans = "Temperature increased by 2 degrees";
-				}
-				else if(feeling == "cold")
-				{
-				ans = "Temperature increased by 3 degrees";
-				}
 			
+			    var feeling = v.parameters.feeling;
+				if(current_mode == "customise")
+				{
+					
+					if(feeling == "hot")
+					{
+					ans = "Temperature decreased by 3 degrees";
+					}
+					else if(feeling == "slightly hot")
+					{
+					ans = "Temperature decreased by 2 degrees";
+					}
+					else if(feeling == "slightly cold")
+					{
+					ans = "Temperature increased by 2 degrees";
+					}
+					else if(feeling == "cold")
+					{
+					ans = "Temperature increased by 3 degrees";
+					}
+				}
+				
+				else if(current_mode == "comfort")
+				{
+					
+					switch(feeling)
+					{
+					case "cold" : ans = "AC running in warm mode";
+									break;
+					case "slightly cold" : ans = "AC running in slightly warm mode";
+									break; 
+					case "slightly hot" : ans = "AC running in slightly cool mode";
+									break; 
+					case "hot" : ans = "AC running in cool mode";
+									break; 
+					
+					}
+				}
 			}
 		
 		}
 		return ans;
 	},
 	
-	comfort_mode_funct : function(v)
-	{
-	
-		if(v!=null)
-		{
-			if(v.parameters.comfortscale)
-			{
-				var comfort = v.parameters.comfortscale;
-				switch(comfort)
-				{
-				case "cool" : ans = "AC running in cool mode";
-								break;
-				case "slightly cool" : ans = "AC running in slightly cool mode";
-								break; 
-				case "comfortable" : ans = "AC running in comfortable mode";
-								break; 
-				case "slightly warm" : ans = "AC running in slightly warm mode";
-								break; 
-				case "warm" : ans = "AC running in warm mode";
-								break; 
-				
-				}
-			}
-			else if(v.parameters.feeling)
-			{
-				var feeling = v.parameters.feeling;
-				switch(feeling)
-				{
-				case "cold" : ans = "AC running in warm mode";
-								break;
-				case "slightly cold" : ans = "AC running in slightly warm mode";
-								break; 
-				case "slightly hot" : ans = "AC running in slightly cool mode";
-								break; 
-				case "hot" : ans = "AC running in cool mode";
-								break; 
-				
-				}
-			}
-		}
-		return ans;
-	},
-	
+		
 	switch_mode_yes_funct : function(v)
 	{
 		var mode = v.outputContexts[0].parameters.mode;
