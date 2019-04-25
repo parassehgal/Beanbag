@@ -5,6 +5,9 @@ var funct = require('./beanbagfunct');
 const restService = express();
 var logfileName='c:/nodeLog.txt';
 
+
+const {SignIn} = require('actions-on-google');
+
 restService.use(
   bodyParser.urlencoded({
     extended: true
@@ -32,6 +35,10 @@ restService.post("/bean", function(req, res) {
 	else if(v.intent.displayName == "combined_mode")
 		{
 			ans = funct.combined_mode_funct(v,current_mode);
+		}
+	else if(v.intent.displayName == "ask_for_sign_in_detail")
+		{
+		ans = new SignIn();
 		}
 	
 		

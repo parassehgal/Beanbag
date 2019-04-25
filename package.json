@@ -4,14 +4,14 @@
     "description": "abc",
     "main": "beanbag.js",
     "scripts": {
-         "start": "node beanbag.js"
-            },
+        "start": "node beanbag.js"
+    },
     "dependencies": {
+        "actions-on-google": "^2.6.0",
         "body-parser": "^1.18.3",
         "express": "^4.16.4"
     },
-    "devDependencies": { },
-    
-  "author": "",
-  "license": "ISC"
+    "devDependencies": {},
+    "author": "",
+    "license": "ISC"
 }
