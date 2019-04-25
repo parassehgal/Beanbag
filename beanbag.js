@@ -36,7 +36,7 @@ restService.post("/bean", function(req, res) {
 		{
 			ans = funct.combined_mode_funct(v,current_mode);
 		}
-	else if(v.intent.displayName == "Default Welcome Intent")
+	else if(v.intent.displayName == "ask_for_sign_in_detail")
 		{
 		ans = new SignIn();
 		}
