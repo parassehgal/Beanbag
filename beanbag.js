@@ -2,11 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 var fs = require('fs');
 var funct = require('./beanbagfunct');
-var signin = require('./oauthsign');
+//var signin = require('./oauthsign');
 const restService = express();
 var logfileName='c:/nodeLog.txt';
 
-const functions = require('firebase-functions');
+//const functions = require('firebase-functions');
 const {dialogflow, SignIn} = require('actions-on-google');
 
 const app = dialogflow({
@@ -30,21 +30,6 @@ restService.post("/bean", function(req, res) {
 	var ans;
 	var v=req.body.queryResult;
 	
-	app.intent('Default Welcome Intent', (conv) => {
-	conv.ask(new SignIn('To get your account details'));
-	});
-
-	app.intent('ask_for_sign_in_confirmation', (conv, params, signin) => {
-	  if (signin.status !== 'OK') {
-		return conv.ask('You need to sign in before using the app.');
-	  }
-	  // const access = conv.user.access.token;
-	  // possibly do something with access token
-	  return conv.ask('Great! Thanks for signing in.');
-	});
-
-module.exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
-
 	
 		if(v.intent.displayName == "on_off_state")
 			{
@@ -57,6 +42,18 @@ module.exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
 		else if(v.intent.displayName == "combined_mode")
 			{
 				ans = funct.combined_mode_funct(v,current_mode);
+			}
+		else if(v.intent.displayName == "Default Welcome Intent")
+			{
+				ans = new SignIn('To get your account details');
+			}
+		else if(v.intent.displayName == "ask_for_sign_in_confirmation")
+			{
+					if (signin.status !== 'OK') {
+					ans = "You need to sign in before using the app";
+				  }
+						else
+	                  ans = "Great! Thanks for signing in.";
 			}
 		
 		
